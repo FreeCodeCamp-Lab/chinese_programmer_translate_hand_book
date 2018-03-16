@@ -1,6 +1,7 @@
 'use strict';
 const path = require('path');
 const fs = require('fs');
+const T = require('tries-tree');
 const { EOL } = require('os');
 
 const DICT_ROOT = path.resolve(`${__dirname}/../../dict`);
@@ -17,6 +18,16 @@ class DictLoader {
       for (let i = 0; i < len; i++) {
         this.words = { ...this.words, ...readWordFromFile(`${DICT_ROOT}/${files[i]}`) }
       }
+    }
+    this.tree = new T({ runtimePath: '/tmp' });
+    this.tree.build(Object.keys(this.words));
+  }
+
+  find(word) {
+    if (this.tree.find(word)) {
+      return this.words[word];
+    } else {
+      return 'NOT_DEFINED';
     }
   }
 }

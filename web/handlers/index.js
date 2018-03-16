@@ -1,9 +1,10 @@
 
-const Robot = {
-  //名字 string in:query
-  name: 'Robot Xiaolan'
+const Query = {
+  //中文 string in:query
+  word: '小姜'
 };
 
-module.exports = (Robot) => {
-  return Robot;
+module.exports = (Query) => {
+  
+  return global.dict.find(decodeURIComponent(Query.word));
 };

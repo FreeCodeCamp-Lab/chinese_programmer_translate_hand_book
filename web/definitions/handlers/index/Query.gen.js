@@ -2,21 +2,21 @@
 
 
 
-class Robot {
+class Query {
   constructor(options={}){
-    this.name = options.name || 'Robot Xiaolan';
+    this.word = options.word || '小姜';
     this.validate();
   }
 
   static fromRequest(req){
     let options={};
-    options.name = this.pick(req, 'query.name', 'string', 'Robot Xiaolan');
-    return new Robot(options);
+    options.word = this.pick(req, 'query.word', 'string', '小姜');
+    return new Query(options);
   }
 
   validate(){
-    if(!((typeof this.name === 'string') && (this.name.length>=0) && (this.name.length<=9007199254740991))){
-      throw new Error('type validate failed: [name]: String length must between 0 to 9007199254740991');
+    if(!((typeof this.word === 'string') && (this.word.length>=0) && (this.word.length<=9007199254740991))){
+      throw new Error('type validate failed: [word]: String length must between 0 to 9007199254740991');
     }
 
   }
@@ -63,4 +63,4 @@ class Robot {
   }
 }
 
-module.exports = Robot;
+module.exports = Query;

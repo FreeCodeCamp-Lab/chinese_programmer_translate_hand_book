@@ -31,10 +31,10 @@
         "method": "get",
         "path": "",
         "query": {
-          "name": {
+          "word": {
             "_type": "string",
-            "_default": "Robot Xiaolan",
-            "_desc": "名字 ",
+            "_default": "小姜",
+            "_desc": "中文 ",
             "_length": [
               0,
               9007199254740991
@@ -46,23 +46,14 @@
       },
       "response": {
         "body": {
-          "success": [
+          "success": [],
+          "failed": [
             {
-              "code": {
-                "_type": "number",
-                "_assert": 200
-              },
-              "data": {
-                "name": {
-                  "_type": "string"
-                }
-              },
-              "message": {
-                "_type": "string"
-              }
+              "code": -1,
+              "message": "[INTERNAL_ERROR]Internal Error: not defined: ",
+              "data": null
             }
-          ],
-          "failed": []
+          ]
         }
       }
     }
